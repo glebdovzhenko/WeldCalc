@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" async
+            src='https://cdn.plot.ly/plotly-2.4.2.min.js'>
+
+    </script>
+    <script type="text/javascript" async
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    <script type="text/javascript" async
+            src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous">
+    </script>
+
+    <title>Клуб любителей парабол</title>
+
+</head>
+<body>
+
+<h1>Клуб любителей парабол</h1>
+
+<table>
+    <tr>
+        <td>
+            {% if plot %}
+                {{ plot | safe }}
+            {% else %}
+                 <p>No plot :(</p>
+            {% endif %}
+        </td>
+    <td>
+        <table>
+        <form id="params" action="/weldcalc">
+            {% for param in parameters %}
+                <tr><td> {{ param.name }}: <input type="text" name="{{ param.name }}" value="{{ param.value }}"> </td></tr>
+            {% endfor %}
+            <tr><td> <input type="submit"></td></tr>
+        </form>
+        </table>
+    </td>
+    </tr>
+</table>
+
+</body>
+</html>
